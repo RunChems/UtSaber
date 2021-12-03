@@ -15,7 +15,9 @@
         </div>
     </div>
 
+    <div class="container">
 
+    </div>
 
     <x-footer/>
 @endsection
