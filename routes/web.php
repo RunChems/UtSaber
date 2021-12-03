@@ -14,11 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('/users', App\Http\Controllers\UserController::class)->middleware('admin');
+Route::resource('/articles', App\Http\Controllers\ArticleController::class)->middleware('admin');
+
 Route::view('/', 'welcome');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::view('/economy', 'economy')->name('economy');
+Route::view('/demography', 'demography')->name('demography');
 
 Route::get('/login/{driver}',
     [App\Http\Controllers\Auth\LoginController::class, 'redirectToProvider'])

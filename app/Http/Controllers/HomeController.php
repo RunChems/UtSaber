@@ -23,6 +23,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user_type = auth()->user()->role;
+        if ($user_type == 'admin') {
+            $article = \App\Models\Article::where('title', 'main')->first();
+            return view('home', compact('article'));
+        } else {
+            $article = \App\Models\Article::where('title', 'demography')->first();
+
+            return view('demography', compact('article'));
+        }
     }
 }
