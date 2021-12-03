@@ -62,7 +62,7 @@
                     </div>
                     <div class="card-body text-center">
                         <img src="" alt="This is an image">
-                        <a class="btn btn-danger w-75 text-center" href="{{route("users.index")}}">
+                        <a class="btn btn-danger w-75 text-center" href="{{route("articles.index")}}">
                             Ir
                         </a>
                         <p>Total de articulos: 150</p>
@@ -75,5 +75,4 @@
         </div>
     </div>
     <div class="mb-5 pb-5"></div>
-    <x-footer/>
 @endsection

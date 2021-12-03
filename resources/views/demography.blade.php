@@ -59,7 +59,6 @@
     $res = curl_exec($ch);
     curl_close($ch);
     $res = json_decode($res, true);
-    echo "<pre>";
     $data = $res['Series'][0]['INDICADOR'];
     //    var_dump($data);
     echo "<script>
@@ -77,7 +76,5 @@
 })
     </script>";
     ?>
-    {{--    <script src="{{asset('js/inegi.js')}}" type="module"></script>--}}
 
-    <x-footer/>
 @endsection('content')

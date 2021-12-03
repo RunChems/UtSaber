@@ -23,6 +23,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::view('/economy', 'economy')->name('economy');
 Route::view('/demography', 'demography')->name('demography');
+Route::view('/profile', 'user.profile')->name('profile');
 
 Route::get('/login/{driver}',
     [App\Http\Controllers\Auth\LoginController::class, 'redirectToProvider'])

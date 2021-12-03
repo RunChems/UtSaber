@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -43,7 +44,13 @@ class UserController extends Controller
     {
 
         User::where('id', $id)->get()->first()->update($request->all());
-        return response()->json(['success' => 'User updated successfully.'])->status(200);
+
+        if (Auth::user()->role == 'admin') {
+            return redirect()->route('users.index')->with('success', 'User updated successfully');
+
+        }
+        return redirect()->route('users.profile')->with('success', 'User updated successfully');
+
     }
 
 

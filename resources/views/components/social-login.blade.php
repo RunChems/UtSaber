@@ -1,10 +1,10 @@
 <div class="container mt-4">
     <div class="row">
-        <div class="col-4  offset-1 card">
+        <div class="col-4  offset-1 card shadow-bottom">
 
             <a href="{{route("login.redirect",'google')}}" class="text-center py-2">{{__("Login with Google")}}</a>
         </div>
-        <div class="col-4 offset-2 card">
+        <div class="col-4 offset-2 card shadow-bottom">
 
             <a href="{{route('login.redirect','facebook')}}" class="text-center py-2"> {{__("Login with Facebook")}}</a>
         </div>

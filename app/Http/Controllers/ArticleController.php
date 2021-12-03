@@ -7,14 +7,11 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        return view('articles.index', [
+            'articles' => Article::all()
+        ]);
     }
 
     /**
@@ -49,15 +46,11 @@ class ArticleController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Models\Article $article
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Article $article)
     {
-        //
+        return view('articles.edit', [
+            'article' => $article
+        ]);
     }
 
     public function update(Request $request, Article $article)

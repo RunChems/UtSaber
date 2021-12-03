@@ -25,7 +25,7 @@
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-dark bg-blue-primary shadow-bottom">
         <div class="container">
-            <a class="navbar-brand fs-1" href="{{ url('/') }}">
+            <a class="navbar-brand fs-3" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -73,11 +73,13 @@
                                 {{ Auth::user()->name }}
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-right bg-body-opaque"
+                            <div class="dropdown-menu dropdown-menu-right bg-body-opaque text-center"
                                  aria-labelledby="navbarDropdown">
-                                <a href="{{route('home')}}" class="dropdown-item">Principal</a>
 
-                                <a href="" class="dropdown-item">Perfil</a>
+                                @if(Auth::user()->role == 'admin')
+                                    <a href="{{route('home')}}" class="dropdown-item">Principal</a>
+                                @endif
+                                <a href="{{route('profile')}}" class="dropdown-item">{{__('Perfil')}}</a>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
@@ -102,5 +104,6 @@
         @yield('content')
     </main>
 </div>
+<x-footer/>
 </body>
 </html>
