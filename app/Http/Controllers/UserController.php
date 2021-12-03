@@ -7,27 +7,17 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
-     */
+
     public function index()
     {
         $users = User::first()->paginate();
         return view('user.index', compact('users'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-
-
-        return view('User.create');
+        return view('user.create');
     }
 
 
@@ -40,56 +30,26 @@ class UserController extends Controller
         ]);
 
         User::create($request->all());
-        return redirect()->route('user.index')->with('success', 'User created successfully.');
+        return response()->json(['success' => 'User Created successfully.'])->status(201);
+    }
+
+    public function show(User $user)
+    {
+        return view('user.show', compact('user'));
     }
 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Models\User $user
-     * @return \Illuminate\Http\Response
-     */
-    public
-    function show(User $user)
+    public function update(Request $request, $id)
     {
-        //
+
+        User::where('id', $id)->get()->first()->update($request->all());
+        return response()->json(['success' => 'User updated successfully.'])->status(200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Models\User $user
-     * @return \Illuminate\Http\Response
-     */
-    public
-    function edit(User $user)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\User $user
-     * @return \Illuminate\Http\Response
-     */
-    public
-    function update(Request $request, User $user)
+    public function destroy(User $user)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Models\User $user
-     * @return \Illuminate\Http\Response
-     */
-    public
-    function destroy(User $user)
-    {
-        //
+        $user->delete();
+        return response()->json(['success' => 'User deleted successfully.'])->status(204);
     }
 }

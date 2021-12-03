@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\App\Htpp\Controllers;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -13,13 +14,7 @@ class UserControllerTest extends TestCase
 
     public function test_create_user()
     {
-        $user = User::factory()->create();
-
-        $response = $this->actingAs($user)
-            ->withSession(['banned' => false])
-            ->get('/');
-
-
+        $user = $this->auth();
         $this->post('/users', [
             'name' => 'test',
             'email' => '05Rungr@gmail.com'
@@ -27,6 +22,40 @@ class UserControllerTest extends TestCase
         $this->assertDatabaseHas('users', [
             'name' => 'test',
             'email' => '05Rungr@gmail.com']);
+    }
+
+    public function test_update_user()
+    {
+
+        $user = $this->auth();
+        $response = $this->put("/users/$user->id", [
+
+            'name' => 'Gatito64',
+            'email' => '26richardr@gmail.com'
+        ]);
+
+        $response->assertStatus(200);
+        $this->assertDatabaseHas('users',
+            ['name' => 'Gatito64',
+                'email' => '26richardr@gmail.com']);
+
+    }
+
+
+    public function test_delete_user()
+    {
+        $user = $this->auth();
+        $response = $this->delete("/users/$user->id");
+        $this->assertDatabaseMissing('users', ['id' => $user->id]);
+
+    }
+
+    private function auth($role = 'admin')
+    {
+        $user = User::factory()->create();
+        $user->role = $role;
+        $this->actingAs($user);
+        return $user;
     }
 
 
