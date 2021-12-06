@@ -1,78 +1,46 @@
+let myChart;
 
- let myChart;
 
-const loadData=()=> {
-      var data = JSON.parse(formatData) 
-        let years = [];
-        let datas = [];
+const loadData = () => {
+    const data = JSON.parse(formatData);
+    let years = [];
+    let datas = [];
 
-        for (let i = 0; i < 5; i++){
-            
-            let year = data.Series[0].OBSERVATIONS[i].TIME_PERIOD
-            years.push(year)
-        }
+    for (let i = 0; i < 5; i++) {
 
-      
-        for (let i = 0; i < 5; i++){
-            
-            let cant = data.Series[0].OBSERVATIONS[i].OBS_VALUE
-            datas.push(cant)
-        }
+        let year = data.Series[0].OBSERVATIONS[i].TIME_PERIOD
+        years.push(year)
+    }
+    for (let i = 0; i < 5; i++) {
 
-      
-    // console.log(years)
-   
+        let cant = data.Series[0].OBSERVATIONS[i].OBS_VALUE
+        datas.push(cant)
+    }
+
     let ctx = document.getElementById("Mychart").getContext("2d");
-    
-     myChart = new Chart(ctx,{
-        type: 'bar',
-        data:{
-            labels:years,
-            datasets:[{
+
+    myChart = new Chart(ctx, {
+        type: 'bar', data: {
+            labels: years, datasets: [{
                 // label:'hidden',
-                data:datas,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.5)',
-                    'rgba(54, 162, 235, 0.5)',
-                    'rgba(255, 206, 86, 0.5)',
-                    'rgba(75, 192, 192, 0.5)',
-                    'rgba(153, 102, 255, 0.5)',
-                    'rgba(255, 159, 64, 0.5)'
-                ],
+                data: datas,
+                backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(255, 206, 86, 0.5)', 'rgba(75, 192, 192, 0.5)', 'rgba(153, 102, 255, 0.5)', 'rgba(255, 159, 64, 0.5)'],
             }]
-            
+
         }
     })
 }
+const graph = () => {
+    let filterBtn = document.querySelector('#filter');
+    filterBtn.addEventListener('click', () => {
+    });
 
-
-
-
-
-
-const fn = () =>{
-
-let graph;
-let filterBtn = document.querySelector('#filter');
- graph =document.querySelector('.graph');
-
-
-filterBtn.addEventListener('click',()=>
-   {
-
-if(myChart){
+}
+if (myChart) {
     myChart.destroy()
 }
-    loadData()
 
-      
+loadData()
 
-})
-    
-}
-
-
-
-
-fn()
+graph();
 

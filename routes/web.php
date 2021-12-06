@@ -20,6 +20,7 @@ Route::view('/', 'welcome');
 
 Auth::routes();
 
+Route::post('/demography', [App\Http\Controllers\GraphController::class, 'index'])->name('graph-demography');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::view('/economy', 'economy')->name('economy');
 Route::view('/demography', 'demography')->name('demography');
