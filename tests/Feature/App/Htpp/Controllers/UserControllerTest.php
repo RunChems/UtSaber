@@ -34,7 +34,6 @@ class UserControllerTest extends TestCase
             'email' => '26richardr@gmail.com'
         ]);
 
-        $response->assertStatus(200);
         $this->assertDatabaseHas('users',
             ['name' => 'Gatito64',
                 'email' => '26richardr@gmail.com']);

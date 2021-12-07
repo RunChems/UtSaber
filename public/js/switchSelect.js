@@ -13,3 +13,13 @@ type.addEventListener('change', () => {
 
 })
 
+
+function switchSelect() {
+    if (type.value === "average") {
+        genderDiv.classList.remove('d-block');
+        genderDiv.classList.add('d-none');
+    } else {
+        genderDiv.classList.add('d-block');
+        genderDiv.classList.remove('d-none');
+    }
+}

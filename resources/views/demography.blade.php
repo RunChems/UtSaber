@@ -1,6 +1,9 @@
-@extends('layouts.app')
+@if(!empty($mun))
+
+    @extends('layouts.app')
 
 @section('content')
+
 
     <div class="container">
 
@@ -24,25 +27,82 @@
         <form action="{{route('graph-demography')}}" method="POST">
             @csrf
             <div class="row justify-content-center">
-                <div class="col-6 text-center d-block" id="gender-toggle">
-                    <label for="gender" class="text-center fs-3">Genero</label>
-                    <select class="form-control" name="gender" id="gender">
-                        <option id="1" value="man">Hombre</option>
-                        <option id="2" value="woman">Mujer</option>
-                    </select>
-                </div>
+                @if(isset($_SESSION['type']))
+                    @if($_SESSION['type'] === 'average')
+                        <div class="col-6 text-center d-none" id="gender-toggle">
+                            <label for="gender" class="text-center fs-3">Genero</label>
+                            <select class="form-control" name="gender" id="gender">
+                                <option
+                                    <?=  isset($_SESSION['indicator']) ? ($_SESSION['indicator'] === '1002000002' ? 'selected' : '') : '' ?> id="1"
+                                    value="1002000002">Hombre
+                                </option>
+                                <option
+                                    <?=  isset($_SESSION['indicator']) ? ($_SESSION['indicator'] === '1002000003' ? 'selected' : '') : '' ?> id="2"
+                                    value="1002000003">Mujer
+                                </option>
+                            </select>
+                        </div>
+                    @else
+                        <div class="col-6 text-center d-block" id="gender-toggle">
+                            <label for="gender" class="text-center fs-3">Genero</label>
+                            <select class="form-control" name="gender" id="gender">
+                                <option
+                                    <?=  isset($_SESSION['indicator']) ? ($_SESSION['indicator'] === '1002000002' ? 'selected' : '') : '' ?> id="1"
+                                    value="1002000002">Hombre
+                                </option>
+                                <option
+                                    <?=  isset($_SESSION['indicator']) ? ($_SESSION['indicator'] === '1002000003' ? 'selected' : '') : '' ?> id="2"
+                                    value="1002000003">Mujer
+                                </option>
+                            </select>
+                        </div>
+                    @endif
+                @else
+                    <div class="col-6 text-center d-block" id="gender-toggle">
+                        <label for="gender" class="text-center fs-3">Genero</label>
+                        <select class="form-control" name="gender" id="gender">
+                            <option
+                                <?=  isset($_SESSION['indicator']) ? ($_SESSION['indicator'] === '1002000002' ? 'selected' : '') : '' ?> id="1"
+                                value="1002000002">Hombre
+                            </option>
+                            <option
+                                <?=  isset($_SESSION['indicator']) ? ($_SESSION['indicator'] === '1002000003' ? 'selected' : '') : '' ?> id="2"
+                                value="1002000003">Mujer
+                            </option>
+                        </select>
+                    </div>
+
+                @endif
+
+
                 <div class="col-6 text-center">
+
+
                     <label for="place" class="text-center fs-3">Municipio</label>
                     <select class="form-control" name="place" id="place" value="{{old('type')}}">
-                        <option id=" 3" value="san-martin">San Martin Texmelucan</option>
-                        <option id="4" value="huejotzingo">Huejotzingo</option>
+
+                        @foreach($mun  as $option)
+                            <option
+                                <?=isset($_SESSION['m_key']) ? ($_SESSION['m_key'] === $option->key ? 'selected' : '') : '' ?> value="{{$option->key}}">
+                                {{$option->name}}
+                            </option>
+
+                        @endforeach
                     </select>
+
                 </div>
                 <div class="col-6 text-center">
-                    <label for="typ" class="text-center  fs-3">Filtro</label>
-                    <select class="form-control" name="type" id="type" value="{{old('type')}}">
-                        <option id="3" value="population">Habitantes</option>
-                        <option id="4" value="average">Promedio</option>
+                    <label for="type" class="text-center  fs-3">Filtro</label>
+                    <select class="form-control" name="type" id="type">
+
+                        <option id="3"
+                                value="population" <?= isset($_SESSION['type']) ? ($_SESSION['type'] === 'population' ? 'selected' : '') : '' ?>>
+                            Habitantes
+                        </option>
+                        <option id="4"
+                                value="average" <?= isset($_SESSION['type']) ? ($_SESSION['type'] === 'average' ? 'selected' : '') : ''  ?>>
+                            Grado promedio de escolaridad
+                        </option>
                     </select>
                 </div>
                 <div class="col-12 text-center mt-5">
@@ -50,52 +110,34 @@
 
                 </div>
             </div>
-
-
         </form>
 
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="graph">
+                    <canvas id="Mychart">
 
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="graph">
-                        <canvas id="Mychart">
 
+                    </canvas>
 
-                        </canvas>
-
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
+    <script>
+        let label = '<?php echo $_SESSION['label'] ?? ''?>';
+        let formatData = ' <?php echo json_encode($data ?? '')?>'
+    </script>
 
-        <div id="php-scripts">
-
-        </div>
-
-
-        {{--        @php--}}
-
-        {{--            $ch = curl_init();--}}
-        {{--            curl_setopt($ch, CURLOPT_URL, "https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000002/es/070000210132/false/BISE/2.0/24c60ae1-bde2-48a9-1659-2605f5f40662?type=json");--}}
-        {{--            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);--}}
-        {{--            curl_setopt($ch, CURLOPT_USERAGENT, "any");--}}
-        {{--            $res = curl_exec($ch);--}}
-        {{--            curl_close($ch);--}}
-        {{--            $res = json_decode($res, true);--}}
-        {{--        @endphp--}}
-
-
-        <script>
-
-            let formatData = ' <?php echo json_encode($data)?>'
-
-
-        </script>
-
-        <script src="{{ asset('js/filter.js')}}"></script>
-        <script src="{{ asset('js/switchSelect.js')}}"></script>
+    <script src="{{ asset('js/filter.js')}}"></script>
+    <script src="{{ asset('js/switchSelect.js')}}"></script>
 
 
 
 @endsection()
+
+@else
+    <script>window.location = "/";</script>
+@endif

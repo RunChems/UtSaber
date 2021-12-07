@@ -3,43 +3,38 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\LocalData;
 
 class GraphController extends Controller
 {
     public function index(Request $request)
     {
-        $place = "";
-        $indicator = "";
-        switch ($request->place) {
-            case 'san-martin':
-                $place = "070000210132";
-                $cord = "19.1762100,-98.4171900";
+        $mun = LocalData::all();
 
-                break;
-            case 'huejotzingo':
-                $place = "070000210074";
-                $cord = "19.2843100,-98.4388500";
+        return view('demography', compact('mun'));
+    }
 
-                break;
-        }
-
+    public function getInfo(Request $request)
+    {
+        $_SESSION['m_key'] = $request->place;
+        $local = LocalData::where('key', $request->place)->first();
         switch ($request->type) {
             case 'population':
-                switch ($request->gender) {
-                    case "man":
-                        $indicator = "1002000002";
-                        break;
-                    case "woman":
-                        $indicator = "1002000003";
-                        break;
-                }
+                $_SESSION['type'] = "population";
+                $_SESSION['indicator'] = $request->gender;
+                $indicator = $request->gender;
+
+
+                $_SESSION['label'] = "Población" . (str_ends_with($request->gender, '2') ? " Hombres en " : " Mujeres en ") . $local->name;
                 break;
             case 'average':
+                $_SESSION['type'] = "average";
                 $indicator = "1005000038";
+                $_SESSION['label'] = "Promedio de escolaridad en " . $local->name;
+
                 break;
         }
-
-        $url = "https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/$indicator/es/$place/false/BISE/2.0/24c60ae1-bde2-48a9-1659-2605f5f40662?type=json";
+        $url = "https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/$indicator/es/$request->place/false/BISE/2.0/" . env("INEGI_KEY") . "?type=json";
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -47,8 +42,9 @@ class GraphController extends Controller
         $res = curl_exec($ch);
         curl_close($ch);
         $res = json_decode($res, true);
+        $mun = LocalData::all();
 
-        return view('demography', ["data" => $res ?? $url]);
+        return view('demography', ["data" => $res ?? $url, "mun" => $mun]);
     }
 
 }

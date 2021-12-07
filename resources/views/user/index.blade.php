@@ -18,7 +18,7 @@
                                 <th>Rol</th>
                                 <th>Creado</th>
                                 <th>Actualizado</th>
-                                <th>Acciones</th>
+                                <th>Eliminar</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -30,9 +30,7 @@
                                     <td>{{ $user->created_at }}</td>
                                     <td>{{ $user->updated_at }}</td>
                                     <td class="d-flex  justify-content-between align-items-center">
-                                        <a href="{{ route('users.show', $user->id) }}"
-                                           class="btn btn-sm btn-info">Show</a>
-                                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-warning">Edit</a>
+
                                         <form action="{{ route('users.destroy', $user->id) }}" method="POST"
                                               class="d-inline">
                                             @csrf

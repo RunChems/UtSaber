@@ -1,6 +1,5 @@
+console.log('Loading')
 let myChart;
-
-
 const loadData = () => {
     const data = JSON.parse(formatData);
     let years = [];
@@ -22,7 +21,7 @@ const loadData = () => {
     myChart = new Chart(ctx, {
         type: 'bar', data: {
             labels: years, datasets: [{
-                // label:'hidden',
+                label: label || 'Datos',
                 data: datas,
                 backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(255, 206, 86, 0.5)', 'rgba(75, 192, 192, 0.5)', 'rgba(153, 102, 255, 0.5)', 'rgba(255, 159, 64, 0.5)'],
             }]
@@ -43,4 +42,5 @@ if (myChart) {
 loadData()
 
 graph();
+
 

@@ -29,8 +29,7 @@ class HomeController extends Controller
             return view('home', compact('article'));
         } else {
             $article = \App\Models\Article::where('title', 'demography')->first();
-
-            return view('demography', compact('article'));
+            return view('user.profile', compact('article'));
         }
     }
 }

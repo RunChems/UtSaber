@@ -31,7 +31,7 @@ class UserController extends Controller
         ]);
 
         User::create($request->all());
-        return response()->json(['success' => 'User Created successfully.'])->status(201);
+        return response()->json(['success' => 'User deleted successfully.'])->status(204);
     }
 
     public function show(User $user)
@@ -40,23 +40,10 @@ class UserController extends Controller
     }
 
 
-    public function update(Request $request, $id)
-    {
-
-        User::where('id', $id)->get()->first()->update($request->all());
-
-        if (Auth::user()->role == 'admin') {
-            return redirect()->route('users.index')->with('success', 'User updated successfully');
-
-        }
-        return redirect()->route('users.profile')->with('success', 'User updated successfully');
-
-    }
-
 
     public function destroy(User $user)
     {
         $user->delete();
-        return response()->json(['success' => 'User deleted successfully.'])->status(204);
+        return redirect()->route('users.index')->with('success', 'User deleted successfully');
     }
 }
