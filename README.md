@@ -12,9 +12,9 @@ UtSaber is focused on information of Puebla, Mexico.
 
 #### Authors:
 
-- Ricardo Rito Anguiano  [Github]()
-- José María García Ramirez [Github]()
-- Oscar Uriel Cuello Juarez [Github]()
+- Ricardo Rito Anguiano  [Github](https://github.com/captainrun)
+- José María García Ramirez [Github](https://github.com/chemagr25)
+- Oscar Uriel Cuello Juarez [Github](https://github.com/MbyteUriel)
 - Brandon Goíz Bravo
 - Wendy Alonso Perez
 
@@ -65,6 +65,3 @@ UtSaber is focused on information of Puebla, Mexico.
 - [Heroku](https://www.heroku.com/)
 - [Google API](https://developers.google.com/api-client-library/php/start/get_started)
 - [Inegi API](https://www.inegi.org.mx/servicios/api_indicadores.html)
-
-
-
