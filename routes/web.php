@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::resource('/users', App\Http\Controllers\UserController::class)->middleware('admin')->except('update');
-Route::Put('/users', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+Route::Put('users/{user}', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 Route::resource('/articles', App\Http\Controllers\ArticleController::class)->middleware('admin');
 Route::view('/', 'welcome');
 Auth::routes();

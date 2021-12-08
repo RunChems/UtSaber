@@ -12,6 +12,13 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function setPasswordAttribute($password)
+    {
+        $pass = bcrypt($password, ['cost' => 10]);
+        $this->password = $pass;
+    }
+
+
     /**
      * The attributes that are mass assignable.
      *
