@@ -7,14 +7,19 @@
 
         <div class="row">
             <div class="col-12 text-center">
-                <h2>Economy</h2>
+                <h2>Economía</h2>
             </div>
         </div>
         <div class="row">
             <div class="col-12 text-center">
-                <article>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda autem dolor dolore eligendi
-                    excepturi ipsam laudantium maiores necessitatibus odio perspiciatis possimus quas, quasi quis, quod
-                    rem repellendus repudiandae unde voluptatem!
+                <article>
+                    La economía es una ciencia que se ocupa de estudiar el uso y la adecuada distribución de los
+                    recursos y bienes materiales, con el fin de cubrir las necesidades de una nación.
+
+                    La economía siempre debe estar en continuo análisis de la sociedad para ser capaz de conocer cada
+                    detalle y averiguar cuáles son los productos que mejor se adaptan a las necesidades. Además, esta
+                    ciencia tiene como objetivo el buscar un equilibrio social y así disminuir al máximo posible la
+                    pobreza y el desempleo del país, a fines de contribuir con la estabilidad social.
                 </article>
             </div>
         </div>

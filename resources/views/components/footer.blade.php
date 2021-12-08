@@ -1,5 +1,5 @@
-<div class="mt-5"></div>
-<div class="pt-5"></div>
+<div class="mt-5 mt-md-0"></div>
+<div class="pt-5 pt-md-0"></div>
 
 <div class="container-fluid  shadow-top bg-blue-primary w-100 position-fixed bottom-0 mt-5">
     <div class="row">

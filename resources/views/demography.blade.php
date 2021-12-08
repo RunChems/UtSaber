@@ -9,14 +9,14 @@
 
         <div class="row">
             <div class="col-12 text-center">
-                <h2>Demografía</h2>
+                <h2 class="fs-1">Demografía</h2>
             </div>
         </div>
         <div class="row">
             <div class="col-12 text-center">
-                <article>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda autem dolor dolore eligendi
-                    excepturi ipsam laudantium maiores necessitatibus odio perspiciatis possimus quas, quasi quis, quod
-                    rem repellendus repudiandae unde voluptatem!
+                <article>Demografía es la ciencia que estudia la población humana en continuo cambio, considerando los ámbitos cuantitativo (estado) y cualitativo (dinámica), incluyendo el pasado y el presente, con el propósito de anticipar eventuales variaciones futuras.
+
+                    La relevancia de esta disciplina radica en que la información que aporta es fundamental para diseñar y planificar políticas tendientes al desarrollo social y económico de los pueblos.
                 </article>
             </div>
         </div>
