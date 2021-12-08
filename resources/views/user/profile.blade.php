@@ -31,16 +31,11 @@
                                 <input class="text-center form-control w-75" name="oldPassword" type="password">
                             </label>
                             <input type="submit" class="mt-5 w-75 btn btn-danger" value="{{__("Update")}}">
-
                         </form>
-
                     </div>
                 </div>
-
             </div>
         </div>
-
-
     </div>
 
 @endsection
