@@ -17,7 +17,7 @@ class GraphController extends Controller
     public function getInfo(Request $request)
     {
         $_SESSION['m_key'] = $request->place;
-        $local = LocalData::where('key', $request->place)->first();
+        $local = LocalData::where('code', $request->place)->first();
         switch ($request->type) {
             case 'population':
                 $_SESSION['type'] = "population";
