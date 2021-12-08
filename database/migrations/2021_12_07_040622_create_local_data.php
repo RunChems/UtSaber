@@ -18,7 +18,7 @@ class CreateLocalData extends Migration
             $table->string('name');
             $table->float('longitude');
             $table->float('latitude');
-            $table->string('key');
+            $table->string('code');
 
 
         });

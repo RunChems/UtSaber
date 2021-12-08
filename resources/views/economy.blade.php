@@ -44,7 +44,7 @@
                     <select class="form-control" name="place" id="place">
                         @foreach($mun as $option)
                             <option
-                                <?=isset($_SESSION['m_key']) ? ($_SESSION['m_key'] === $option->key ? 'selected' : '') : '' ?> value="{{$option->latitude.",".$option->longitude}}">
+                                <?=isset($_SESSION['m_key']) ? ($_SESSION['m_key'] === $option->code ? 'selected' : '') : '' ?> value="{{$option->latitude.",".$option->longitude}}">
                                 {{$option->name}}
                             </option>
                         @endforeach
