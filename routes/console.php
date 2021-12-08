@@ -18,6 +18,11 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
 
-Artisan::command('chems:lomito', function () {
-    $this->comment('Chems Lomito, Chems lomito, Chems lomitoooooooooooooo');
+Artisan::command('chems:anthem', function () {
+    $total = rand(5, 20);
+    for ($i = 0; $i < $total; $i++) {
+        $os = rand(1, 10);
+        $lomitos = rand(1, 4);
+        $this->comment(str_repeat("Chems Lomito, ", $lomitos) . 'Chems lomit' . str_repeat('o', $os));
+    }
 })->purpose('Sing with all your heart our anthem');
