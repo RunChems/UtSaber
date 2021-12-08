@@ -1,12 +1,10 @@
-INSERT INTO articles ('title', 'body', 'created_at', 'updated_at')
+INSERT INTO articles (title, body, created_at, updated_at)
 VALUES ('main', 'Chems Lomito en heroku', '2019-01-01 00:00:00', '2019-01-01 00:00:00');
 
-INSERT INTO users ('name', 'email', 'role', 'created_at', 'updated_at')
+INSERT INTO users (name, email, role, created_at, updated_at)
 VALUES ('Ricardo', '26richardr@gmail.com', 'admin', '2019-01-01 00:00:00', '2019-01-01 00:00:00');
 
-
-
-Insert INTO local_data ('id', 'name', 'longitude', 'latitude', 'code')
+Insert INTO local_data (id, name, longitude, latitude, code)
 VALUES (1, 'Acajete', -97.95, 19.10, '070000210001'),
        (2, 'Acateno', -97.21, 20.13, '070000210002'),
        (3, 'Acatlan', -98.05, 18.20, '070000210003'),
