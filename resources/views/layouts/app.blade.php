@@ -10,18 +10,21 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ secure_asset('js/app.js') }}" defer></script>
+    <script src="{{ env('APP_ENV')=='local'? asset('js/app.js'):secure_asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ secure_asset('css/index.css') }}" rel="stylesheet">
+    <link href="{{  env('APP_ENV')=='local'? asset('css/app.css') : secure_asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{  env('APP_ENV')=='local'? asset('css/index.css') : secure_asset('css/index.css') }}"
+          rel="stylesheet">
 
-<!-- cahrt.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.2/chart.js" integrity="sha512-7Fh4YXugCSzbfLXgGvD/4mUJQty68IFFwB65VQwdAf1vnJSG02RjjSCslDPK0TnGRthFI8/bSecJl6vlUHklaw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- cahrt.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.2/chart.js"
+            integrity="sha512-7Fh4YXugCSzbfLXgGvD/4mUJQty68IFFwB65VQwdAf1vnJSG02RjjSCslDPK0TnGRthFI8/bSecJl6vlUHklaw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </head>
 <body>
