@@ -83,7 +83,7 @@
 
                         @foreach($mun  as $option)
                             <option
-                                <?=isset($_SESSION['m_key']) ? ($_SESSION['m_key'] === $option->key ? 'selected' : '') : '' ?> value="{{$option->key}}">
+                                <?=isset($_SESSION['m_key']) ? ($_SESSION['m_key'] === $option->code ? 'selected' : '') : '' ?> value="{{$option->key}}">
                                 {{$option->name}}
                             </option>
 

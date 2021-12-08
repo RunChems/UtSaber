@@ -18,6 +18,8 @@ class GraphController extends Controller
     {
         $_SESSION['m_key'] = $request->place;
         $local = LocalData::where('code', $request->place)->first();
+
+
         switch ($request->type) {
             case 'population':
                 $_SESSION['type'] = "population";
@@ -25,7 +27,7 @@ class GraphController extends Controller
                 $indicator = $request->gender;
 
 
-                $_SESSION['label'] = "Población" . (str_ends_with($request->gender, '2') ? " Hombres en " : " Mujeres en ") . $local->name;
+                $_SESSION['label'] = "Población" . (str_ends_with($request->gender, '2') ? " Hombres en " : " Mujeres en ") . $local->name ?? '';
                 break;
             case 'average':
                 $_SESSION['type'] = "average";
