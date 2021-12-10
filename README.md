@@ -48,8 +48,9 @@ UtSaber is focused on information of Puebla, Mexico.
 #### Run Migrations
 
 `php artisan migrate --seed`
+
 Execute `database/migration.sql` in your configured db
-- Soon it will be updated in a seeder
+- It will be updated in a seeder soon
 #### Run serve
 
 `php artisan chems:anthem && php artisan serve `
